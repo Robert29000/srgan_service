@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import SET_NULL
 from skimage import transform
 import imageio
 import numpy as np
@@ -6,10 +7,6 @@ from PIL import Image
 # Create your models here.
 
 
-class ResultImage(models.Model):
-    result_id = models.AutoField(primary_key=True)
-    related_image_id = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='result_images/')
 
 
 class UploadedImage(models.Model):
@@ -24,3 +21,9 @@ class UploadedImage(models.Model):
             img = (img * 255).astype(np.uint8)
             img = Image.fromarray(img)
             img.save(self.image.path)
+
+
+class ResultImage(models.Model):
+    result_id = models.AutoField(primary_key=True)
+    related_image = models.ForeignKey(UploadedImage, to_field='upload_id', on_delete=SET_NULL, null=True)
+    image = models.ImageField(upload_to='result_images/')
