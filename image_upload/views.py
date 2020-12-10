@@ -67,7 +67,7 @@ def show_model_config_view(request):
     height = gen_model.input.shape[1]
     width = gen_model.input.shape[2]
     scale = gen_model.output.shape[1] / height
-    response = {"Image heigth": height,
+    response = {"Image height": height,
                 "Image width": width,
                 "Scale factor": scale}
     return Response(response)
