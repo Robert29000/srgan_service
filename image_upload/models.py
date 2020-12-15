@@ -7,8 +7,6 @@ from PIL import Image
 # Create your models here.
 
 
-
-
 class UploadedImage(models.Model):
     upload_id = models.AutoField(primary_key=True)
     image = models.ImageField(upload_to='uploaded_images/')

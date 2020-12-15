@@ -18,7 +18,7 @@ from rest_framework.decorators import api_view
 from .serializers import ImageSerializer
 import os
 
-gen_model = keras.models.load_model(os.path.join(BASE_DIR, "generator_m_v2_1.h5"), compile=False)
+gen_model = keras.models.load_model(os.path.join(BASE_DIR, "generator.h5"), compile=False)
 
 
 class ImageView(APIView):
